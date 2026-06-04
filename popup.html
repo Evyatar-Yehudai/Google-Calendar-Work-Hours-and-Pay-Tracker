@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      /* Define System-Aware Light and Dark Theme Variables */
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #202124;
+        --label-color: #5f6368;
+        --input-bg: #ffffff;
+        --input-border: #dadce0;
+        --input-text: #202124;
+        --btn-bg: #1a73e8;
+        --btn-hover: #1557b0;
+        --btn-text: #ffffff;
+        --btn-secondary-bg: #f1f3f4;
+        --btn-secondary-hover: #e8eaed;
+        --btn-secondary-text: #1a73e8;
+        --status-success: #137333;
+        --status-error: #c5221f;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-color: #202124;
+          --text-color: #e8eaed;
+          --label-color: #9aa0a6;
+          --input-bg: #2d2e31;
+          --input-border: #5f6368;
+          --input-text: #e8eaed;
+          --btn-bg: #8ab4f8;
+          --btn-hover: #aecbfa;
+          --btn-text: #202124;
+          --btn-secondary-bg: #3c4043;
+          --btn-secondary-hover: #4f5357;
+          --btn-secondary-text: #8ab4f8;
+          --status-success: #81c784;
+          --status-error: #f28b82;
+        }
+      }
+
+      body {
+        width: 240px;
+        font-family: Arial, sans-serif;
+        padding: 12px;
+        margin: 0;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: background-color 0.2s, color 0.2s;
+      }
+      h3 { 
+        margin-top: 0; 
+        margin-bottom: 12px;
+        color: var(--text-color);
+      }
+      .form-group {
+        margin-bottom: 10px;
+      }
+      label {
+        display: block;
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 4px;
+        color: var(--label-color);
+      }
+      input {
+        width: 92%;
+        padding: 6px;
+        background-color: var(--input-bg);
+        border: 1px solid var(--input-border);
+        color: var(--input-text);
+        border-radius: 4px;
+        font-size: 13px;
+        transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+      }
+      input:focus {
+        outline: none;
+        border-color: var(--btn-bg);
+      }
+      button {
+        width: 100%;
+        padding: 8px;
+        background-color: var(--btn-bg);
+        color: var(--btn-text);
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: background-color 0.2s;
+      }
+      button:hover {
+        background-color: var(--btn-hover);
+      }
+      .btn-secondary {
+        background-color: var(--btn-secondary-bg);
+        color: var(--btn-secondary-text);
+        margin-top: 4px;
+        margin-bottom: 4px;
+      }
+      .btn-secondary:hover {
+        background-color: var(--btn-secondary-hover);
+      }
+      #status { 
+        font-size: 12px; 
+        margin: 6px 0 0 0;
+        text-align: center;
+        min-height: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Tracker Settings</h3>
+    
+    <div class="form-group">
+      <label for="calendarId">Calendar ID</label>
+      <input id="calendarId" placeholder="Make sure the calendar ONLY tracks work hours" />
+    </div>
+
+    <div class="form-group">
+      <label for="hourlyRate">Hourly Rate (₪)</label>
+      <input id="hourlyRate" placeholder="e.g. 50" type="number" step="0.01" />
+    </div>
+
+    <button id="showEstimateBtn" class="btn-secondary">Show Estimate</button>
+    <button id="save">Save Settings</button>
+    <p id="status"></p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

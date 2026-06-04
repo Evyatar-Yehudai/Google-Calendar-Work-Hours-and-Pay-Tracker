@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Google Calendar Work Hours & Pay Tracker",
+  "version": "1.0.0",
+  "description": "Calculates work hours from Google Calendar and estimates monthly pay.",
+
+  "permissions": [
+    "storage",
+    "identity",
+    "activeTab",
+    "scripting",
+    "webNavigation"
+  ],  
+
+  "host_permissions": [
+    "https://calendar.google.com/*",
+    "https://www.googleapis.com/*"
+  ],
+
+  "oauth2": {
+    "client_id": "208198211913-jkjdp4kamjiiphkhj3ibgqi6o8be5eu9.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar.readonly"
+    ]
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Work Hours Tracker",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["https://calendar.google.com/*"],
+      "js": ["Content.js"]
+    }
+  ]
+}
